@@ -6,7 +6,7 @@ import numpy as np
 from cvlib.object_detection import draw_bbox
 import concurrent.futures
  
-url='http://172.16.121.81/cam-hi.jpg'
+url="http://172.16.121.66/cam-hi.jpg"
 im=None
  
 def run1():
@@ -32,7 +32,7 @@ def run2():
  
         bbox, label, conf = cv.detect_common_objects(im)
         im = draw_bbox(im, bbox, label, conf)
-        
+ 
         cv2.imshow('detection',im)
         key=cv2.waitKey(5)
         if key==ord('q'):
@@ -47,3 +47,4 @@ if __name__ == '__main__':
     with concurrent.futures.ProcessPoolExecutor() as executer:
             f1= executer.submit(run1)
             f2= executer.submit(run2)
+            
